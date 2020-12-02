@@ -31,6 +31,9 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     start load_modules
+    
+on property:ro.crypto.type=file
+    setprop ro.crypto.state encrypted
 
 service load_modules /system/bin/load_modules.sh
     oneshot
